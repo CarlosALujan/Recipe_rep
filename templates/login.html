@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Random Movie Generator Login</title>
+        <h1>Login!</h1>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form name="Login" action="/login_post" method="POST">
+            <input id="Username" name="Username" type="text" class="input" placeholder="Username">
+            <button type="submit" value="Login">Login</button>
+        </form>
+        <break></break>
+        <a href="/">Sign Up</a>
+    </body>
+</html>

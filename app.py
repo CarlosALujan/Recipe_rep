@@ -37,24 +37,40 @@ with app.app_context():
 def signup():
     return flask.render_template('signup.html')
 
-@app.route('/signup_post')
+@app.route('/signup_post', methods = ['POST','GET'])
 def signup_post():
-    return flask.render_template('')
+    username=request.form.get('Username')
+    person = Person.query.filter_by(username=username).first()
+    if person:
+        flash("Username already exist login in or create a new user!")
+        return redirect(url_for('sign_up'))
+    new_user=Person(username=username)
+    db.session.add(new_user)
+    db.session.commit()
+    return redirect(url_for('login'))
 
 @app.route('/login')
 def login():
     return flask.render_template('login.html')
 
-@app.route('/login_post')
+@app.route('/login_post', methods = ['POST','GET'])
 def login_post():
-    return flask.render_template()
+    username = request.form.get('Username')
+    person = Person.query.filter_by(username=username).first()
+    if person:
+        login_user(person)
+        return redirect(url_for('home'))
+    flash("Username does not exist Sign up or try again!")
+    return redirect(url_for('login'))
 
 @app.route('/home')
-def signup_post():
+@login_required
+def home():
     return flask.render_template('home.html')
 
 @app.route('/random')
-def signup_post():
+@login_required
+def random():
     return flask.render_template('random.html')
 
 if __name__ == "__main__":
