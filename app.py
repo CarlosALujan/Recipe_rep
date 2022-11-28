@@ -104,6 +104,7 @@ def random():
     )
     rec_ing = response1.json()
     recipe_ing = rec_ing['extendedIngredients']
+    '''
     ing = ""
     count = 0
     for i in recipe_ing:
@@ -114,6 +115,7 @@ def random():
         ing = ing + string + " " + string2 + " " + string3 + ", "
         count = count + 1
     ing = ing.rstrip(", ")
+    '''
     
     SPOON_STEPS_URL = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
     response2 = requests.get(
@@ -124,7 +126,7 @@ def random():
     )
     rec_steps = response2.json()
     recipe_steps = rec_steps[0]['steps']
-    steps = ""
+    '''steps = ""
     count1 = 0
 
     for i in recipe_steps:
@@ -133,7 +135,7 @@ def random():
         string5 = str(strin5)
         steps = steps + "Step:" + string5 + " " + string4 + ", "
         count1= count1 + 1
-    steps = steps.rstrip(", ")
-    return flask.render_template('random.html',recipe_name=recipe_name, recipe_img = recipe_img, ing=ing, steps=steps)
+    steps = steps.rstrip(", ")'''
+    return flask.render_template('randomupdated.html',recipe_name=recipe_name, recipe_img=recipe_img, ingredient_list=recipe_ing, steps_list=recipe_steps)
 if __name__ == "__main__":
     app.run()

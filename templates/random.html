@@ -25,7 +25,9 @@
                 Ingredients:
             </h2>
             <br>
-            {{ing}}
+            {% for ingredient in ingredient_list %}
+            <p>{{ingredient['original']}}</p>
+            {% endfor %}
             <br>
         </p2>
         <p3>
@@ -33,9 +35,9 @@
             <h3>
                 Steps:
             </h3>
-            <br>
-            {{steps}}
-            <br>
+            {% for step in steps_list %}
+            <p>Step {{step['number']}}: {{step['step']}}</p>
+            {% endfor %}
         </p3>
         <p4>
             <br>
