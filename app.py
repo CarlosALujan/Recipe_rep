@@ -42,7 +42,7 @@ def signup_post():
     person = Person.query.filter_by(username=username).first()
     if person:
         flash("Username already exist login in or create a new user!")
-        return redirect(url_for('sign_up'))
+        return redirect(url_for('signup'))
     new_user=Person(username=username)
     db.session.add(new_user)
     db.session.commit()
