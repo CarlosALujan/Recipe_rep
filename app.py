@@ -9,7 +9,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import current_user, UserMixin, LoginManager, login_user, login_required, logout_user
 
 load_dotenv(find_dotenv())
-    
 
 app = flask.Flask(__name__)
 app.secret_key = "flash messages"
@@ -69,18 +68,25 @@ def home():
     search = ''
     return flask.render_template('home.html')
 
-@app.route('/random')
+@app.route('/random', methods = ['POST','GET'])
 @login_required
 def random():
     search = request.form.get('Search')
-    SPOON_BASE_URL_AND_PATH = f'https://api.spoonacular.com/food/search?'
+    SPOON_BASE_URL_AND_PATH = f'https://api.spoonacular.com/food/search'
     response = requests.get(
         SPOON_BASE_URL_AND_PATH,
         params ={
-            "query": search 
-
+            "apiKey": os.getenv('SPOONAPI'),
+            "query": search,
+            "number": 10
         }
     )
-    return flask.render_template('random.html')
+    response1 = response.json()
+    print(response1)
+    ran_num= randint(0,9)
+    recipe = response1['searchResults'][0]
+    recipe_name = recipe['results'][ran_num]['name']
+    recipe_img = recipe['results'][ran_num]['image']
+    return flask.render_template('random.html',recipe_name=recipe_name, recipe_img = recipe_img)
 if __name__ == "__main__":
     app.run()
