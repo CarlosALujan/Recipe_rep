@@ -66,12 +66,21 @@ def login_post():
 @app.route('/home')
 @login_required
 def home():
+    search = ''
     return flask.render_template('home.html')
 
 @app.route('/random')
 @login_required
 def random():
-    return flask.render_template('random.html')
+    search = request.form.get('Search')
+    SPOON_BASE_URL_AND_PATH = f'https://api.spoonacular.com/food/search?'
+    response = requests.get(
+        SPOON_BASE_URL_AND_PATH,
+        params ={
+            "query": search 
 
+        }
+    )
+    return flask.render_template('random.html')
 if __name__ == "__main__":
     app.run()

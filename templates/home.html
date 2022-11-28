@@ -10,10 +10,15 @@
             Welcome to RecipeRando!
         </h1>
         <p1>
-            Want a random recipe click the button
+            Want a random recipe? Submit something you would want
+            <br>
+            such as either a plate or ingredient. For example
+            <br>
+            Pasta, Pizza, Salad or Apple, Cinnamon, Chipotle.
         </p1>
-        <form action="/random" method="POST">
-            <input type="submit" name="random" value="Random Movie">
+        <form name="Random" action="/random" method="POST">
+            <input id="Search" name="Search" type="text" class="input" placeholder="Search">
+            <button type="submit" value="Search">Search</button>
         </form>
     </body>
 </html>
