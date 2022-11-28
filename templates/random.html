@@ -8,16 +8,42 @@
 
         </script>
     </head>
-    <center>
+    
     <body>
-        <p1>
+        <a href="/logout">Log out</a>
+        <center>
+        <h1>
             {{recipe_name}}
-        </p1>
+        </h1>
         <br>
-        <p2>
+        <p1>
             <img src = "{{recipe_img}}"><br>
+        </p1>
+        <p2>
+            <br>
+            <h2>
+                Ingredients:
+            </h2>
+            <br>
+            {{ing}}
+            <br>
         </p2>
-
+        <p3>
+            <br>
+            <h3>
+                Steps:
+            </h3>
+            <br>
+            {{steps}}
+            <br>
+        </p3>
+        <p4>
+            <br>
+            Dont like this recipe try again and go back to home menu!
+            <form action="/home" method="POST">
+                <input type="submit" name="home" value="Go back to Home Page">
+            </form>
+        </p4>
+        </center>
     </body>
-    </center>
 </html>

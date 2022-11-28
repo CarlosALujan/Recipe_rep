@@ -62,7 +62,13 @@ def login_post():
     flash("Username does not exist Sign up or try again!")
     return redirect(url_for('login'))
 
-@app.route('/home')
+@app.route('/logout', methods=['POST','GET'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+@app.route('/home', methods = ['POST','GET'])
 @login_required
 def home():
     search = ''
@@ -81,14 +87,53 @@ def random():
             "number": 10
         }
     )
-    response1 = response.json()
-    print(response1)
+    name_img = response.json()
     ran_num= randint(0,9)
-    recipe = response1['searchResults'][0]
+    recipe = name_img['searchResults'][0]
     recipe_name = recipe['results'][ran_num]['name']
     recipe_img = recipe['results'][ran_num]['image']
     recipe_id = recipe['results'][ran_num]['id']
+
+    id = recipe_id
+    SPOON_ING_URL = f'https://api.spoonacular.com/recipes/{id}/information'
+    response1 = requests.get(
+        SPOON_ING_URL,
+        params ={
+            "apiKey": os.getenv('SPOONAPI')
+        }
+    )
+    rec_ing = response1.json()
+    recipe_ing = rec_ing['extendedIngredients']
+    ing = ""
+    count = 0
+    for i in recipe_ing:
+        string = recipe_ing[count]['name']
+        strin2 = recipe_ing[count]['measures']['us']['amount']
+        string2 = str(strin2)
+        string3 = recipe_ing[count]['measures']['us']['unitLong']
+        ing = ing + string + " " + string2 + " " + string3 + ", "
+        count = count + 1
+    ing = ing.rstrip(", ")
     
-    return flask.render_template('random.html',recipe_name=recipe_name, recipe_img = recipe_img)
+    SPOON_STEPS_URL = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
+    response2 = requests.get(
+        SPOON_STEPS_URL,
+        params ={
+            "apiKey": os.getenv('SPOONAPI')
+        }
+    )
+    rec_steps = response2.json()
+    recipe_steps = rec_steps[0]['steps']
+    steps = ""
+    count1 = 0
+
+    for i in recipe_steps:
+        string4 = recipe_steps[count1]['step']
+        strin5 = recipe_steps[count1]['number']
+        string5 = str(strin5)
+        steps = steps + "Step:" + string5 + " " + string4 + ", "
+        count1= count1 + 1
+    steps = steps.rstrip(", ")
+    return flask.render_template('random.html',recipe_name=recipe_name, recipe_img = recipe_img, ing=ing, steps=steps)
 if __name__ == "__main__":
     app.run()
