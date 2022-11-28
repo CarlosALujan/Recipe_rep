@@ -87,6 +87,8 @@ def random():
     recipe = response1['searchResults'][0]
     recipe_name = recipe['results'][ran_num]['name']
     recipe_img = recipe['results'][ran_num]['image']
+    recipe_id = recipe['results'][ran_num]['id']
+    
     return flask.render_template('random.html',recipe_name=recipe_name, recipe_img = recipe_img)
 if __name__ == "__main__":
     app.run()
