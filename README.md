@@ -5,6 +5,10 @@ Carlos Lujan 2 Pull Request List Link
 1
 2
 
+Neil williamson 2 pull request list links
+https://github.com/CarlosALujan/Recipe_rep/pull/3
+https://github.com/CarlosALujan/Recipe_rep/pull/1
+
 2+ examples of things you enjoyed about or learned from this project
 1. I learned to be confident in my REST API implementation skills, I had trouble with the moviedatabase and was terrified to 
 handle this food related API. Suprisingly this API was easier to implement thanks to our previous task in the class.
