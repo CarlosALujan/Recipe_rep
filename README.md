@@ -2,8 +2,8 @@
 GitHub Project Repo Link: https://github.com/CarlosALujan/Recipe_rep
 
 Carlos Lujan 2 Pull Request List Link
-1
-2
+https://github.com/CarlosALujan/Recipe_rep/pull/2
+
 
 Neil williamson 2 pull request list links
 https://github.com/CarlosALujan/Recipe_rep/pull/3
