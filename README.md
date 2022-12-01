@@ -6,15 +6,15 @@ Carlos Lujan 2 Pull Request List Link
 2
 
 2+ examples of things you enjoyed about or learned from this project
-1.I learned to be confident in my REST API implementation skills, I had trouble with the moviedatabase and was terrified to 
+1. I learned to be confident in my REST API implementation skills, I had trouble with the moviedatabase and was terrified to 
 handle this food related API. Suprisingly this API was easier to implement thanks to our previous task in the class.
-2.
+2. 
 
 2+ examples of things you didn’t enjoy or wanted to learn from this project
 1. One thing I didnt enjoy about the project was that it was great idea, but there wasn't enough time to complete the website as planned. The website is great and is unique for people who dont know what to make for food but could have better features.
 2.
 
-Google Doc Link Access: 
+Google Doc Link Access: https://docs.google.com/document/d/1kuS3163BdiRUt3XGXGROzh7W2G6vgTYHsv9nNyhH_J8/edit?usp=sharing
 Fly.io Deployment Link: https://bitter-darkness-8066.fly.dev/
 
 
